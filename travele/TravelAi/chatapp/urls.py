@@ -4,4 +4,7 @@ from . import views
 urlpatterns = [
     # Other URL patterns
     path('ask_question/', views.ask_question, name='ask_question'),
+    path("", views.chat, name="chat"),
+
+    
 ]

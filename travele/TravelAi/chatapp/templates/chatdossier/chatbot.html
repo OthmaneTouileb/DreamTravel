@@ -300,46 +300,46 @@ pre button {
         chatCard.scrollTop = chatCard.scrollHeight;
         $.ajax({
             type: 'POST',
-            url: '/ask_question/',
+            url: '/chat/ask_question/',  // Corrected URL
             data: {
                 'text': text,
                 csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(res) {
-              var response = md.render(res.data.text); // Render Markdown content
-              var chatCard = document.getElementById('scroll');
-              var typingSpeed = 15; // Set the typing speed in milliseconds
-              // Create response_data div
-              var responseDataDiv = document.createElement('div');
-              responseDataDiv.id = 'response_data';
-              responseDataDiv.classList.add('d-flex', 'flex-row', 'justify-content-start', 'mb-3');
-              chatCard.appendChild(responseDataDiv);
-              
-              // Create avatar image
-              var avatarImg = document.createElement('img');
-              avatarImg.src = "https://espere.in/static/images/newlogo.png";
-              avatarImg.alt = "avatar 1";
-              avatarImg.style.width = '40px';
-              avatarImg.style.height = '100%';
-              responseDataDiv.appendChild(avatarImg);
-              
-              // Create chatArea div
-              var chatAreaDiv = document.createElement('div');
-              chatAreaDiv.id = 'chatArea';
-              chatAreaDiv.classList.add('small', 'p-2', 'ms-2', 'mb-1', 'me-auto', 'text-dark');
-              chatAreaDiv.style.backgroundColor = '#ffffffb8';
-              chatAreaDiv.style.fontSize = 'smaller';
-              chatAreaDiv.style.borderRadius = '0px 20px 20px 20px';
-              chatAreaDiv.innerHTML = response;
-              responseDataDiv.appendChild(chatAreaDiv);
-              // chatAreaDiv.innerHTML += response
-              loading.innerHTML = '';
-              chatCard.scrollTop = chatCard.scrollHeight;
-              enableUserText();
-
-          },
-
-
+                if (res.response && res.response.text) {
+                    var response = md.render(res.response.text); // Render Markdown content
+    
+                    // Create response_data div
+                    var responseDataDiv = document.createElement('div');
+                    responseDataDiv.id = 'response_data';
+                    responseDataDiv.classList.add('d-flex', 'flex-row', 'justify-content-start', 'mb-3');
+                    chatCard.appendChild(responseDataDiv);
+    
+                    // Create avatar image
+                    var avatarImg = document.createElement('img');
+                    avatarImg.src = "https://espere.in/static/images/newlogo.png";
+                    avatarImg.alt = "avatar 1";
+                    avatarImg.style.width = '40px';
+                    avatarImg.style.height = '100%';
+                    responseDataDiv.appendChild(avatarImg);
+    
+                    // Create chatArea div
+                    var chatAreaDiv = document.createElement('div');
+                    chatAreaDiv.id = 'chatArea';
+                    chatAreaDiv.classList.add('small', 'p-2', 'ms-2', 'mb-1', 'me-auto', 'text-dark');
+                    chatAreaDiv.style.backgroundColor = '#ffffffb8';
+                    chatAreaDiv.style.fontSize = 'smaller';
+                    chatAreaDiv.style.borderRadius = '0px 20px 20px 20px';
+                    chatAreaDiv.innerHTML = response;
+                    responseDataDiv.appendChild(chatAreaDiv);
+    
+                    loading.innerHTML = '';
+                    chatCard.scrollTop = chatCard.scrollHeight;
+                    enableUserText();
+                } else {
+                    console.error("Unexpected response structure:", res);
+                }
+            },
             error: function() {
                 console.log("There was an error!");
             }
