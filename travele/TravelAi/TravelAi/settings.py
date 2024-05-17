@@ -140,6 +140,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'userauths.User'
 
+LOGOUT_REDIRECT_URL = '/user/login/'
+
 # settings.py
 
 # AUTH_USER_MODEL = 'chatapp.CustomUser'  # Replace 'myapp' with the name of your app containing the custom user model

@@ -1,7 +1,38 @@
 
-
-<form action="" method="POST">
+<style>
+    /* Add Bootstrap to your project (adjust paths as needed) */
+    /* Consider using a CSS preprocessor like Sass/LESS for better maintainability */
+    .signup-form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  
+    .form-group {  /* Remove if not using Bootstrap classes in form.as_p */
+      margin-bottom: 15px; /* Add spacing between form fields (optional) */
+    }
+  
+    label {  /* Remove if not using Bootstrap classes in form.as_p */
+      display: block; /* Display labels on top of input fields (optional) */
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  
+    .btn-primary {
+      background-color: #007bff; /* Adjust button color as desired */
+      border-color: #007bff; /* Match button color */
+    }
+  </style>
+  
+  <form action="" method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Register</button> 
-</form>
+    <div class="signup-form">
+      <h2>Sign Up</h2>
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+  

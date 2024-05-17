@@ -5,26 +5,59 @@
 
 <head>
     <style>
-        /* Floating Button CSS */
-        .floating-button {
+        /* Floating Chat Button CSS */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999; /* Ensure the button is on top of other content */
+    background-color: #007bff; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.floating-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+        .floating-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #FF0000; /* Green background */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .logout-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #dc3545; /* Red background */
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 15px 20px;
+            padding: 10px 15px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
+            font-size: 14px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease;
+            z-index: 1000; /* Adjust the value as needed */
+            /* Add other styles as needed */
         }
 
-        .floating-button:hover {
-            background-color: #1abc9c; /* Darker green on hover */
+        .logout-button:hover {
+            background-color: #c82333; /* Darker red on hover */
         }
     </style>
     <link rel="shortcut icon" href="upload/TG-Thumb.png" />
@@ -1170,6 +1203,11 @@
         };
         /* ]]> */
     </script>
-    <a class="floating-button" href="http://127.0.0.1:8000/chat/">Chat with me!</a>
+    <div class="floating-container">
+        <a class="floating-button" href="http://127.0.0.1:8000/chat/">Chat with me!</a>
+    </div>
+    <!-- Logout Button -->
+    <a href="{% url 'userauths:logout' %}" class="logout-button">Logout</a>
+
 </body>
 </html>
