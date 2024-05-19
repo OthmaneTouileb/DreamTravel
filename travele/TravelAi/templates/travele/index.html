@@ -542,7 +542,7 @@
                             <h2 class="ppb_title" style="color:#ffffff;">Where do you want to go?</h2>
                             <div class="page_tagline" style="color:#ffffff;">Trips, experiences, and places. All in one service.</div>
                             <form id="tour_search_form" class="tour_search_form" method="get" action="#">
-                                <div class="tour_search_wrapper">
+                                {% comment %} <div class="tour_search_wrapper">
                                     <div class="one_fourth themeborder">
                                         <input id="keyword" name="keyword" type="text" autocomplete="off" placeholder="Destination, city" />
                                         <span class="ti-search"></span>
@@ -617,7 +617,7 @@
                                             <span>$</span>
                                         </div>
                                     </div>
-                                </div>
+                                {% comment %} </div> {% endcomment %}
                                 <div class="tour_advance_search_wrapper_link"><a id="tour_advance_search_toggle" href="javascript:;" style="color:#ffffff;"><span class="icon ti-angle-down"></span>Advanced Search</a></div>
                             </form>
                         </div>
